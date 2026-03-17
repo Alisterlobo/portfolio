@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alister John Lobo | Software Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        .tail-container {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #00132e 0%, #4f73a2 100%);
+        }
+
+        .section-header {
+            position: relative;
+        }
+        
+        .section-header:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #0ea5e9;
+            border-radius: 9999px;
+        }
+
+        /* ENHANCED MOBILE MENU ANIMATIONS */
+        #mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.6s cubic-bezier(0.32, 0.72, 0, 1);
+            opacity: 0;
+        }
+        
+        #mobile-menu.open {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .hamburger-line {
+            width: 28px;
+            height: 2.5px;
+            background: #e2e8f0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        #hamburger.open .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        #hamburger.open .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        
+        #hamburger.open .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Staggered menu links */
+        .menu-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        #mobile-menu.open .menu-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Backdrop */
+        #backdrop {
+            opacity: 0;
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        #backdrop.show {
+            opacity: 1;
+        }
+
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px -15px rgb(14 165 233);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #0ea5e9;
+        }
+
+        .skill-pill {
+            transition: all 0.2s ease;
+        }
+        
+        .skill-pill:hover {
+            background-color: #149acb;
+            color: white;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 640px) {
+            .heading-font {
+                font-size: 2.75rem !important;
+                line-height: 1.1 !important;
+            }
+        }
+    </style>
+</head>
+<body class="tail-container bg-slate-950 text-slate-200 overflow-x-hidden">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-lg border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-sky-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">AJ</div>
+                <span class="heading-font text-2xl font-semibold tracking-tight">Alister Lobo</span>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-9 text-sm font-medium">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#education" class="nav-link">Education</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <!-- Resume -->
+                <a href="g:\My Drive\A_RESUME.pdf" download="Alister_John_Lobo_Resume.pdf"
+                   class="hidden md:flex items-center gap-2 px-7 py-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-2xl text-sm font-medium transition-all">
+                    <i class="fas fa-download text-sky-400"></i>
+                    Resume
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/Alisterlobo" target="_blank" 
+                   class="px-5 py-3 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-2xl transition-all">
+                    <i class="fab fa-github"></i>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/alister-lobo-8406252b5/" target="_blank" 
+                   class="px-5 py-3 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-2xl transition-all">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+
+                <!-- Enhanced Hamburger -->
+                <button id="hamburger" class="md:hidden flex flex-col items-center justify-center gap-1.5 w-10 h-10">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- BACKDROP -->
+    <div id="backdrop" class="fixed inset-0 bg-black/70 z-40 hidden md:hidden"></div>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-80 bg-slate-950 z-50 shadow-2xl hidden md:hidden flex-col pt-20">
+        <div class="px-8 flex flex-col gap-8 text-2xl font-medium">
+            <a href="#about" class="menu-item mobile-link text-slate-200 hover:text-sky-400 transition-colors">About</a>
+            <a href="#experience" class="menu-item mobile-link text-slate-200 hover:text-sky-400 transition-colors">Experience</a>
+            <a href="#projects" class="menu-item mobile-link text-slate-200 hover:text-sky-400 transition-colors">Projects</a>
+            <a href="#skills" class="menu-item mobile-link text-slate-200 hover:text-sky-400 transition-colors">Skills</a>
+            <a href="#education" class="menu-item mobile-link text-slate-200 hover:text-sky-400 transition-colors">Education</a>
+        </div>
+
+        <!-- Social + Resume in menu -->
+        <div class="mt-auto px-8 pb-12">
+            <div class="flex gap-8 mb-10">
+                <a href="https://github.com/Alisterlobo" target="_blank" class="text-4xl text-slate-400 hover:text-white transition-colors"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/alister-lobo-8406252b5/" target="_blank" class="text-4xl text-slate-400 hover:text-white transition-colors"><i class="fab fa-linkedin"></i></a>
+            </div>
+            
+            <a href="g:\My Drive\A_RESUME.pdf" download="Alister_John_Lobo_Resume.pdf"
+               class="flex items-center justify-center gap-3 w-full bg-sky-600 hover:bg-sky-500 text-white py-5 rounded-2xl font-medium text-lg transition-all">
+                <i class="fas fa-download"></i>
+                Download Resume
+            </a>
+        </div>
+    </div>
+
+    <!-- HERO & ALL OTHER SECTIONS REMAIN EXACTLY THE SAME (clean professional design) -->
+    <!-- HERO -->
+    <header id="hero" class="hero-bg min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-7 space-y-8">
+                <div class="inline-flex items-center gap-2 bg-slate-900 px-5 py-2.5 rounded-3xl text-sm">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full"></div>
+                    OPEN TO JUNIOR DEVELOPER ROLES
+                </div>
+                
+                <h1 class="heading-font text-[3.6rem] md:text-[4.8rem] font-semibold tracking-tighter leading-none">
+                    ALISTER JOHN LOBO
+                </h1>
+                
+                <p class="hero-text text-2xl text-slate-400 max-w-lg">
+                    Entry-level MERN Stack Developer with hands-on experience building scalable web applications and AI-powered solutions.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#projects" 
+                       class="px-9 py-4 bg-white text-slate-950 font-semibold rounded-2xl hover:bg-slate-100 transition-all text-lg flex items-center justify-center gap-3">
+                        View Projects
+                    </a>
+                    
+                    <!-- <a href="resume.pdf" download="Alister_John_Lobo_Resume.pdf"
+                       class="px-9 py-4 border border-slate-400 hover:border-white font-medium rounded-2xl transition-all text-lg flex items-center justify-center gap-3">
+                        <i class="fas fa-download"></i>
+                        Download Resume
+                    </a> -->
+                </div>
+            </div>
+
+            <div class="md:col-span-5 hidden md:block">
+                <div class="bg-slate-900 border border-slate-700 rounded-3xl p-10">
+                    <div class="aspect-video bg-slate-800 rounded-2xl flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="mx-auto w-32 h-32 bg-gradient-to-br from-sky-500 to-blue-600 rounded-3xl flex items-center justify-center text-6xl font-bold text-white">AJ</div>
+                            <div class="mt-8 text-sm tracking-widest text-slate-400">MERN STACK • AI INTEGRATION • CLOUD</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-24 bg-slate-900">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="section-header text-5xl font-semibold heading-font mb-10">Professional Summary</h2>
+            <div class="text-lg text-slate-300 leading-relaxed max-w-3xl">
+                Entry-level Software Developer with practical experience in full-stack web development using the MERN stack. 
+                Completed a 4-month internship delivering production-ready features including RESTful APIs, authentication, 
+                and responsive interfaces. Proficient in modern JavaScript frameworks, database optimization, and AI API integration. 
+                Seeking a junior developer position to contribute to innovative projects and grow within a professional engineering team.
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE, PROJECTS, SKILLS, EDUCATION, FOOTER - unchanged (professional & clean) -->
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-24 bg-slate-950">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="section-header text-5xl font-semibold heading-font mb-12">Work Experience</h2>
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-10">
+                <div class="flex flex-col md:flex-row gap-10">
+                    <div class="md:w-72">
+                        <div class="text-sky-400 font-medium">April 2024 – July 2024</div>
+                        <div class="mt-3 text-2xl font-semibold">MERN Stack Developer Intern</div>
+                        <div class="text-slate-400">Softionik, Mangalore, India</div>
+                    </div>
+                    <div class="flex-1 space-y-5 text-slate-300">
+                        <div class="flex gap-4"><span class="text-sky-400 text-xl">•</span> Built responsive client dashboard using React.js for Courier Hub application</div>
+                        <div class="flex gap-4"><span class="text-sky-400 text-xl">•</span> Developed secure backend APIs with Node.js, Express.js, and JWT authentication</div>
+                        <div class="flex gap-4"><span class="text-sky-400 text-xl">•</span> Optimized MongoDB schemas and queries for improved performance</div>
+                        <div class="flex gap-4"><span class="text-sky-400 text-xl">•</span> Collaborated with team members to resolve bugs and enhance user experience</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-24 bg-slate-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-header text-5xl font-semibold heading-font mb-6">Featured Projects</h2>
+            <p class="text-slate-400 mb-14">Live, production-ready applications built with modern technologies</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="project-card bg-slate-950 border border-slate-800 rounded-3xl overflow-hidden">
+                    <div class="h-64 bg-slate-800 flex items-center justify-center text-7xl">🤖</div>
+                    <div class="p-8">
+                        <h3 class="font-semibold text-2xl">AI Chatbot</h3>
+                        <p class="text-slate-400 mt-1 mb-6">React • Vite • Hugging Face API • Tailwind CSS</p>
+                        <a href="https://react-ai-chatbot-evej-ten.vercel.app/" target="_blank" class="block w-full text-center py-4 border border-slate-700 hover:border-sky-400 rounded-2xl font-medium transition-all">View Live Demo</a>
+                    </div>
+                </div>
+                <div class="project-card bg-slate-950 border border-slate-800 rounded-3xl overflow-hidden">
+                    <div class="h-64 bg-slate-800 flex items-center justify-center text-7xl">📅</div>
+                    <div class="p-8">
+                        <h3 class="font-semibold text-2xl">Food Table Reservation System</h3>
+                        <p class="text-slate-400 mt-1 mb-6">React • Node.js • Express • MongoDB (Full MERN)</p>
+                        <a href="https://food-reservation-rho.vercel.app/" target="_blank" class="block w-full text-center py-4 border border-slate-700 hover:border-sky-400 rounded-2xl font-medium transition-all">View Live Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-24 bg-slate-950">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="section-header text-5xl font-semibold heading-font mb-12 text-center">Technical Skills</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="bg-slate-900 border border-slate-800 p-8 rounded-3xl">
+                    <div class="text-sky-400 uppercase text-sm font-medium mb-6">Frontend</div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill bg-slate-800 px-5 py-2 rounded-3xl text-sm">React.js</span>
+                        <span class="skill-pill bg-slate-800 px-5 py-2 rounded-3xl text-sm">JavaScript (ES6+)</span>
+                        <span class="skill-pill bg-slate-800 px-5 py-2 rounded-3xl text-sm">Tailwind CSS</span>
+                        <span class="skill-pill bg-slate-800 px-5 py-2 rounded-3xl text-sm">HTML5 / CSS3</span>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-8 rounded-3xl">
+                    <div class="text-sky-400 uppercase text-sm font-medium mb-6">Backend &amp; Database</div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill bg-slate-800 px-5 py-2 rounded-3xl text-sm">Node.js</span>
+                        <span class="skill-pill bg-slate-800 px-5 py-2 rounded-3xl text-sm">Express.js</span>
+                        <span class="skill-pill bg-slate-800 px-5 py-2 rounded-3xl text-sm">MongoDB</span>
+                        <span class="skill-pill bg-slate-800 px-5 py-2 rounded-3xl text-sm">RESTful APIs</span>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-8 rounded-3xl">
+                    <div class="text-sky-400 uppercase text-sm font-medium mb-6">Tools &amp; Others</div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill bg-slate-800 px-5 py-2 rounded-3xl text-sm">AWS (EC2, S3)</span>
+                        <span class="skill-pill bg-slate-800 px-5 py-2 rounded-3xl text-sm">Hugging Face API</span>
+                        <span class="skill-pill bg-slate-800 px-5 py-2 rounded-3xl text-sm">Git / GitHub</span>
+                        <span class="skill-pill bg-slate-800 px-5 py-2 rounded-3xl text-sm">JWT Authentication</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="py-24 bg-slate-900">
+        <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="section-header text-5xl font-semibold heading-font mb-10">Education</h2>
+                <div class="space-y-10">
+                    <div>
+                        <div class="font-medium text-sky-400">2022 – 2024</div>
+                        <div class="text-xl font-semibold mt-1">Master of Computer Applications (MCA)</div>
+                        <div class="text-slate-400">St. Aloysius Institute of Management and Information Technology • CGPA 7.5</div>
+                    </div>
+                    <div>
+                        <div class="font-medium text-sky-400">2019 – 2022</div>
+                        <div class="text-xl font-semibold mt-1">Bachelor of Computer Applications (BCA)</div>
+                        <div class="text-slate-400">Milagres College, Udupi • CGPA 8.0</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2 class="section-header text-5xl font-semibold heading-font mb-10">Certifications</h2>
+                <div class="space-y-8">
+                    <div class="flex items-start gap-5"><span class="text-3xl">☁️</span><div>AWS Cloud Practitioner Essentials<br><span class="text-xs text-slate-500">Amazon Web Services • October 2025</span></div></div>
+                    <div class="flex items-start gap-5"><span class="text-3xl">⚛️</span><div>Hands-On React Applications with React Hooks<br><span class="text-xs text-slate-500">Infosys Springboard • October 2024</span></div></div>
+                    <div class="flex items-start gap-5"><span class="text-3xl">🏦</span><div>Commonwealth Bank Introduction to Software Engineering<br><span class="text-xs text-slate-500">Forage • February 2026</span></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="heading-font text-5xl font-semibold mb-8">Ready to connect and collaborate</h2>
+            <a href="mailto:alisterlobo9483@gmail.com" class="inline-block text-xl border border-slate-300 hover:border-sky-400 px-12 py-5 rounded-2xl transition-all">alisterlobo9483@gmail.com</a>
+            <div class="flex justify-center gap-8 mt-16 text-3xl">
+                <a href="https://github.com/Alisterlobo" target="_blank" class="hover:text-sky-400">GitHub</a>
+                <a href="https://www.linkedin.com/in/alister-lobo-8406252b5/" target="_blank" class="hover:text-sky-400">LinkedIn</a>
+            </div>
+            <p class="text-xs text-slate-600 mt-20">© 2026 Alister John Lobo • Professional Portfolio</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const backdrop = document.getElementById('backdrop');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        let isOpen = false;
+
+        function toggleMenu() {
+            isOpen = !isOpen;
+            
+            if (isOpen) {
+                hamburger.classList.add('open');
+                mobileMenu.classList.remove('hidden');
+                backdrop.classList.remove('hidden');
+                
+                // Trigger animations
+                setTimeout(() => {
+                    mobileMenu.classList.add('open');
+                    backdrop.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Stagger menu items
+                    menuItems.forEach((item, index) => {
+                        item.style.transitionDelay = `${index * 80}ms`;
+                    });
+                }, 10);
+            } else {
+                mobileMenu.classList.remove('open');
+                backdrop.classList.remove('show');
+                document.body.style.overflow = 'visible';
+                
+                setTimeout(() => {
+                    hamburger.classList.remove('open');
+                    mobileMenu.classList.add('hidden');
+                    backdrop.classList.add('hidden');
+                }, 600);
+            }
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+
+        // Close on backdrop click or menu link click
+        backdrop.addEventListener('click', () => {
+            if (isOpen) toggleMenu();
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (isOpen) toggleMenu();
+            });
+        });
+
+        // Smooth scroll for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        console.log('%c✅ Mobile menu animations enhanced: sliding from right, staggered links, hamburger → X, backdrop fade & scroll lock', 
+        'color:#0ea5e9; font-family:monospace;');
+    </script>
+</body>
+</html>
